@@ -10,6 +10,17 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - name: Create .env file
+      uses: ozaytsev86/create-env-file@v1
+      with:
+        INFLUXDB_BUCKET: ${{ secrets.INFLUXDB_BUCKET }}
+        INFLUXDB_HOST: ${{ secrets.INFLUXDB_HOST }}
+        INFLUXDB_ORG: ${{ secrets.INFLUXDB_ORG }}
+        JWT_SECRET: ${{ secrets.JWT_SECRET }}
+        NICO_PASSWORD: ${{ secrets.NICO_PASSWORD }}
+        NICO_USERNAME: ${{ secrets.NICO_USERNAME }}
+        RUST_LOG: ${{ secrets.RUST_LOG }}
+        
     - name: Checkout code
       uses: actions/checkout@v4
 
