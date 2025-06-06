@@ -15,7 +15,6 @@ use influxdb2::models::DataPoint;
 use influxdb2::Client;
 
 
-// Data structures
 #[derive(Serialize, Deserialize, Clone)]
 struct User {
     id: u32,
@@ -60,7 +59,6 @@ struct LoginResponse {
     token: String,
 }
 
-// Application state
 struct AppState {
     users: Mutex<HashMap<String, User>>,
 }
@@ -72,7 +70,6 @@ const JWT_SECRET: LazyLock<String> = LazyLock::new(|| {
 });
 
 
-// Middleware to validate JWT
 async fn validate_token(req: &HttpRequest) -> Result<User, HttpResponse> {
     let auth_header = match req.headers().get("Authorization") {
         Some(header) => header.to_str().unwrap_or(""),
