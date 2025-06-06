@@ -1,5 +1,6 @@
 services:
-  nicotine-ingester:
+  nicotine-ingest:
+    container_name: nicotine-ingester
     build: .
     ports:
       - "5000:8080"
